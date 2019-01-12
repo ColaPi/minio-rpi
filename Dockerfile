@@ -1,4 +1,4 @@
-FROM resin/resin/raspberrypi3-golang
+FROM resin/resin/raspberrypi3-golang:1.10.4
 
 LABEL maintainer="Minio Inc <dev@minio.io>"
 
