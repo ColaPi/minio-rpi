@@ -1,2 +1,2 @@
 # minio-rpi
-minio on raspberrypi3
+minio in raspberrypi3.
