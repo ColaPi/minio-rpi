@@ -17,8 +17,8 @@ ENV MINIO_ACCESS_KEY_FILE=access_key \
 EXPOSE 9000
 
 COPY --from=0 /go/bin/minio /usr/bin/minio
-ADD https://raw.githubusercontent.com/minio/minio/master/dockerscripts/docker-entrypoint.sh dockerscripts/healthcheck.sh /usr/bin/
-
+ADD https://raw.githubusercontent.com/minio/minio/master/dockerscripts/docker-entrypoint.sh /usr/bin/
+ADD https://raw.githubusercontent.com/minio/minio/master/dockerscripts/healthcheck.sh /usr/bin/
 RUN \ 
 apk add --no-cache ca-certificates 'curl>7.61.0' && \
 echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf
