@@ -1,6 +1,4 @@
-FROM resin/resin/raspberrypi3-golang:1.10.4
-
-LABEL maintainer="Minio Inc <dev@minio.io>"
+FROM resin/raspberrypi3-golang:1.10.4
 
 ENV GOPATH /go
 ENV CGO_ENABLED 0
