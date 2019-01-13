@@ -21,4 +21,4 @@ jobs:
     - stage: test image
       script:
         - docker run --rm --privileged multiarch/qemu-user-static:register --reset
-        - docker run --rm $IMAGE -v
+        - docker run --rm $IMAGE version
