@@ -1,4 +1,4 @@
-FROM arm32v7/golang:1.12-alpine
+FROM balenalib/armv7hf-alpine-golang:1.11-build
 
 ENV GOPATH /go
 ENV CGO_ENABLED 0
@@ -9,7 +9,7 @@ go get -v -d github.com/minio/minio && \
 cd /go/src/github.com/minio/minio && \
 go install -v -ldflags "$(go run buildscripts/gen-ldflags.go)" 
 
-FROM arm32v7/alpine
+FROM balenalib/armv7hf-alpine:latest-run
 ENV MINIO_UPDATE off
 ENV MINIO_ACCESS_KEY_FILE=access_key \
     MINIO_SECRET_KEY_FILE=secret_key
