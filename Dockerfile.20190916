@@ -11,7 +11,7 @@ RUN  \
      go install -v -ldflags "$(go run buildscripts/gen-ldflags.go)"
 
 
-FROM alpine:3.9
+FROM balenalib/raspberrypi3-alpine:latest-run
 
 ENV MINIO_UPDATE off
 ENV MINIO_ACCESS_KEY_FILE=access_key \
