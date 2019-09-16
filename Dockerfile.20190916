@@ -1,4 +1,4 @@
-FROM arm32v7/golang:1.13-alpine
+FROM balenalib/raspberrypi3-golang:latest-build
 
 ENV GOPATH /go
 ENV CGO_ENABLED 0
@@ -11,7 +11,7 @@ RUN  \
      go install -v -ldflags "$(go run buildscripts/gen-ldflags.go)"
 
 
-FROM balenalib/raspberrypi3-alpine:latest-run
+FROM balenalib/raspberrypi3-alpine:latest:run
 
 ENV MINIO_UPDATE off
 ENV MINIO_ACCESS_KEY_FILE=access_key \
