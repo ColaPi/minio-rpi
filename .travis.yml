@@ -10,12 +10,12 @@ jobs:
     - stage: build image
       script:
         - if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-            TAG=v`date +"%Y%m%d"`;
-            docker run --rm --privileged multiarch/qemu-user-static:register --reset;
-            docker build . -t $IMAGE:latest -t $IMAGE:$TAG;
-            echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin;
-            docker push $IMAGE:$TAG;
-            docker push $IMAGE:latest;
+          TAG=v`date +"%Y%m%d"`;
+          docker run --rm --privileged multiarch/qemu-user-static:register --reset;
+          docker build . -f Dockerfile.20190916 -t $IMAGE:latest -t $IMAGE:$TAG;
+          echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin;
+          docker push $IMAGE:$TAG;
+          docker push $IMAGE:latest;
           fi
 
     - stage: test image
