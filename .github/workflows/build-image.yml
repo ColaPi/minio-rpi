@@ -1,0 +1,37 @@
+name: build-image
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: build docker image
+        run: |
+          docker run --rm --privileged multiarch/qemu-user-static:register --reset;
+          docker build . -t colachen/minio-rpi:v`date +%Y%m%d` -t colachen/minio-rpi:latest
+      - name: push image to dockerhub
+        run: |
+          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+          docker push colachen/minio-rpi:v`date +%Y%m%d`
+          docker push colachen/minio-rpi:latest
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: test binary version
+        run: |
+        - docker run --rm --privileged multiarch/qemu-user-static:register --reset
+        - docker run --rm colachen/minio-rpi:latest version
