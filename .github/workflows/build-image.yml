@@ -33,5 +33,5 @@ jobs:
 
       - name: test binary version
         run: |
-        - docker run --rm --privileged multiarch/qemu-user-static:register --reset
-        - docker run --rm colachen/minio-rpi:latest version
+          docker run --rm --privileged multiarch/qemu-user-static:register --reset
+          docker run --rm colachen/minio-rpi:latest version
