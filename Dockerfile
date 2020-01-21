@@ -5,7 +5,7 @@ ENV CGO_ENABLED 0
 ENV GO111MODULE on
 ENV GOPROXY https://proxy.golang.org
 
-ENV VERSION RELEASE.2019-12-19T22-52-26Z
+ENV VERSION RELEASE.2020-01-16T22-40-29Z
 
 RUN  \
      git clone --branch $VERSION https://github.com/minio/minio && cd minio && \
